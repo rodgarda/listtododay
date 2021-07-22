@@ -1,7 +1,7 @@
 <div class="container">
   <div class="list" cdkDropList [cdkDropListData]="items" (cdkDropListDropped)="drop($event)">
       <mat-card class="list-item" *ngFor="let item of items" cdkDrag>
-          <mat-card-content>
+          <mat-card-content (click)="viola()">
               <p>{{item}}</p>
           </mat-card-content>
       </mat-card>

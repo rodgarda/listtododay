@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
 export class ListComponent implements OnInit {
 
   items: any[] = [];
+  justClicked = false;
+  doubleClicked = false;
 
   constructor() { }
 
@@ -34,4 +36,29 @@ export class ListComponent implements OnInit {
     this.items.push(newItemForm.value.newItem);
     newItemForm.reset();
   }
+
+  viola() {
+    if (this.justClicked === true) {
+      this.doubleClicked = true;
+      this.doubleClick();
+    } else {
+      this.justClicked = true;
+      setTimeout(() => {
+        this.justClicked = false;
+        if (this.doubleClicked === false) {
+          this.singleClick();
+        }
+        this.doubleClicked = false;
+      }, 500);
+    }
+  }
+
+  singleClick() {
+    console.log('single');
+  }
+
+  doubleClick() {
+    console.log('double');
+  }
+
 }
